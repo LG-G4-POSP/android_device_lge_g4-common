@@ -71,13 +71,17 @@ case "$target" in
             echo -n enable > $mode
         done
 
+# Available Freqs in kernel
+# Little: 384000 460800 600000 672000 787200 864000 960000 1248000 1440000
+# Big: 384000 480000 633600 768000 864000 960000 1248000 1344000 1440000 1536000 1632000 1689600 1824000
+
         # ensure at most one A57 is online when thermal hotplug is disabled
         echo 0 > /sys/devices/system/cpu/cpu5/online
         # online CPU4
         echo 1 > /sys/devices/system/cpu/cpu4/online
-        echo ondemand > /sys/devices/system/cpu/cpu4/cpufreq/scaling_governor
+        echo tripndroid > /sys/devices/system/cpu/cpu4/cpufreq/scaling_governor
         # configure CPU0
-        echo interactive > /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
+        echo tripndroid > /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
         # restore A57's max
         cat /sys/devices/system/cpu/cpu4/cpufreq/cpuinfo_max_freq > /sys/devices/system/cpu/cpu4/cpufreq/scaling_max_freq
         # plugin remaining A57s
@@ -85,9 +89,12 @@ case "$target" in
         # Restore CPU 4 max freq from msm_performance
         echo "4:1632000 5:1632000" > /sys/module/msm_performance/parameters/cpu_max_freq
 	# input boost,cpu boost
-	echo 0:672000 1:0 2:0 3:0 4:480000 5:0 > /sys/module/cpu_boost/parameters/input_boost_freq
+	echo 0:787200 1:0 2:0 3:0 4:480000 5:0 > /sys/module/cpu_boost/parameters/input_boost_freq
+        echo 20 > /sys/module/cpu_boost/parameters/boost_ms
+        echo 40 > /sys/module/cpu_boost/parameters/input_boost_ms
+
         # multi boost configuration
-        echo 0:672000 > /sys/module/cpu_boost/parameters/multi_boost_freq
+        echo 0:787200 > /sys/module/cpu_boost/parameters/multi_boost_freq
 
         #enable rps static configuration
         echo 8 >  /sys/class/net/rmnet_ipa0/queues/rx-0/rps_cpus
