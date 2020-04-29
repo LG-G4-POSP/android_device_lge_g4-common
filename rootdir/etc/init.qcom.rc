@@ -1093,6 +1093,12 @@ service lge-sensor-sh /system/vendor/bin/init.msm8992.sensor.sh
     seclabel u:r:sensors:s0
 # start sensor daemon as core class [END]
 
+# Start extreme logcat and kernel logger service
+service debugme /system/bin/sh /system/bin/debugme.sh
+    oneshot
+    disabled
+
+
 service boot_lc /system/bin/logcat -b all -D -f /cache/debug/boot_lc_full.txt
     user system
     group root system
