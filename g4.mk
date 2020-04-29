@@ -165,6 +165,7 @@ PRODUCT_PACKAGES += \
     wrild.sh \
     sysctl.rc \
     sysctl.conf \
+    debugme.sh \
     pulse.sh
 
 # IPA
