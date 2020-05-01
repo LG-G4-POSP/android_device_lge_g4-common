@@ -75,6 +75,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Properties to improve rendering
     debug.enable.sglscale=1 \
     debug.egl.hw=1 \
+    debug.hwui.renderer=skia \
     debug.sf.hw=1 \
     debug.sf.disable_hwc=0 \
     debug.sf.recomputecrop=0 \
