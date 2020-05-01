@@ -83,8 +83,6 @@ on fs
     # debug boot process
     rm -rf /cache/debug
     mkdir /cache/debug 0770 system root
-    #Start debugme Extreme logger service
-    start debugme
 
 
 on init
@@ -1092,11 +1090,6 @@ service lge-sensor-sh /system/vendor/bin/init.msm8992.sensor.sh
     oneshot
     seclabel u:r:sensors:s0
 # start sensor daemon as core class [END]
-
-# Start extreme logcat and kernel logger service
-service debugme /system/bin/sh /system/bin/debugme.sh
-    oneshot
-    disabled
 
 
 service boot_lc /system/bin/logcat -b all -D -f /cache/debug/boot_lc_full.txt
