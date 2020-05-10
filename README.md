@@ -1,5 +1,8 @@
 Copyright 2015 - The CyanogenMod Project
 
+<img src="https://i.imgur.com/tmt6SBG.png">
+
+
 Device configuration for LG G4.
 =====================================
 
