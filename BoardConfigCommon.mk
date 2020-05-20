@@ -96,9 +96,9 @@ TARGET_CAMERASERVICE_CLOSES_NATIVE_HANDLES := true
 TARGET_PROCESS_SDK_VERSION_OVERRIDE := \
     /system/vendor/bin/mm-qcamera-daemon=24
 
-# Disabble oat2dex
+# Disable dex2oat
  WITH_DEXPREOPT := false
- 
+
 # Display
 HAVE_ADRENO_SOURCE:= false
 MAX_EGL_CACHE_KEY_SIZE := 12*1024
