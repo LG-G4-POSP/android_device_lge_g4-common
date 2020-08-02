@@ -97,7 +97,7 @@ TARGET_PROCESS_SDK_VERSION_OVERRIDE := \
     /system/vendor/bin/mm-qcamera-daemon=24
 
 # Disable dex2oat
- WITH_DEXPREOPT := false
+# WITH_DEXPREOPT := false
 
 # Display
 HAVE_ADRENO_SOURCE:= false
