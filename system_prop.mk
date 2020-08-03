@@ -53,11 +53,11 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Dalvik
 PRODUCT_PROPERTY_OVERRIDES += \
-    dalvik.vm.heapstartsize=16m \
-    dalvik.vm.heapgrowthlimit=288m \
-    dalvik.vm.heapsize=768m \
-    dalvik.vm.heaptargetutilization=0.75 \
-    dalvik.vm.heapminfree=2m \
+    dalvik.vm.heapstartsize=8m \
+    dalvik.vm.heapgrowthlimit=256m \
+    dalvik.vm.heapsize=512m \
+    dalvik.vm.heaptargetutilization=0.50 \
+    dalvik.vm.heapminfree=1m \
     dalvik.vm.heapmaxfree=8m
 
 # Dexopt (try not to use big cores during dexopt)
@@ -124,7 +124,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     vidc.debug.level=1 \
     vidc.debug.perf.mode=2 \
     vidc.enc.dcvs.extra-buff-count=2 \
-    persist.camera.cpp.duplication=false
+    persist.camera.cpp.duplication=false \
+    ro.config.avoid_gfx_accel=true
 
 # Perf
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -170,3 +171,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Storage
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.sys.sdcardfs=true
+
+# Fix graphical glitches on skiagl
+PRODUCT_PROPERTY_OVERRIDES += \
+    debug.hwui.renderer=opengl
+
