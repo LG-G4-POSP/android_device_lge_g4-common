@@ -99,6 +99,19 @@ TARGET_PROCESS_SDK_VERSION_OVERRIDE := \
 # Disable dex2oat
 # WITH_DEXPREOPT := false
 
+
+# Enable dexpreopt to speed boot time
+ifeq ($(HOST_OS),linux)
+  ifneq ($(TARGET_BUILD_VARIANT),userdebug)
+      WITH_DEXPREOPT := true
+      WITH_DEXPREOPT_DEBUG_INFO := true
+      USE_DEX2OAT_DEBUG := true
+      DONT_DEXPREOPT_PREBUILTS := true
+      WITH_DEXPREOPT_PIC := true
+      WITH_DEXPREOPT_BOOT_IMG_AND_SYSTEM_SERVER_ONLY := true
+  endif
+endif
+
 # Display
 HAVE_ADRENO_SOURCE:= false
 MAX_EGL_CACHE_KEY_SIZE := 12*1024
