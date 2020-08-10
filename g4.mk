@@ -16,6 +16,10 @@
 
 $(call inherit-product-if-exists, vendor/lge/g4-common/g4-common-vendor.mk)
 
+# APEX
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/ld.config.txt:$(TARGET_COPY_OUT_SYSTEM)/etc/swcodec/ld.config.txt
+
 # Audio
 PRODUCT_PACKAGES += \
     android.hardware.audio@2.0-impl \
@@ -128,7 +132,6 @@ TARGET_FS_CONFIG_GEN := $(LOCAL_PATH)/config.fs
 PRODUCT_PACKAGES += \
     android.hardware.gnss@1.0-impl \
     android.hardware.gnss@1.0-service \
-    gps.msm8992 \
     quipc.conf
 
 PRODUCT_COPY_FILES += \
@@ -334,7 +337,7 @@ PRODUCT_COPY_FILES += \
 # Sensors
 PRODUCT_PACKAGES += \
     android.hardware.sensors@1.0-impl
- 
+
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/sensors/sensor_def_common.conf:system/etc/sensors/sensor_def_common.conf \
     $(LOCAL_PATH)/sensors/sensor_def_variable.conf:system/etc/sensors/sensor_def_variable.conf \
@@ -348,7 +351,8 @@ PRODUCT_PACKAGES += \
     libshim_cameraclient \
     libqsap_shim \
     libfence_shim \
-    ims_rtp_shim
+    ims_rtp_shim \
+    slim_shim
 
 # System properties
 -include $(LOCAL_PATH)/system_prop.mk
