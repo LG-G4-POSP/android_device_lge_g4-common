@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2018 AOSCP
+ * Copyright (C) 2013 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,5 +13,26 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-const char *_ZN10CneFactory23CreateCneNetworkRequestE10CnoNetTypeP27ICneNetworkObserverNotifier;
-const char *_ZN10CneFactory23CreateCneNetworkRequestE10CnoNetTypeP27ICneNetworkObserverNotifier17CnoSimSlotIdxType;
+
+#ifndef LIBRILUTILS_H
+#define LIBRILUTILS_H
+
+#include <stdint.h>
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+/**
+ * Return system time in nanos.
+ *
+ * This is a monotonicly increasing clock and
+ * return the same value as System.nanoTime in java.
+ */
+uint64_t ril_nano_time();
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // LIBRILUTILS_H
